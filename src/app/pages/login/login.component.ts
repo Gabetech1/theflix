@@ -20,32 +20,26 @@ export class LoginComponent {
         password: form.value.password,
       };
 
-    /*  if(form.value.email == "daniel4u2210@yahoo.com" && form.value.password == "Nulbulk@21"){
-         this.router.navigate(["/nul-admin/tracking_list"]);
-          //  this.api.showAlert('success','login successful')
-          form.reset();
-      }
-      else{
-         this.api.showAlert("danger", "username or password is inccorect");
-          form.reset();
-      }
-      */
-
       // console.log (data)
-      this.api.login(data).subscribe(
-        (res) => {
-          //   console.log(res)
-          this.router.navigate(["/nul-admin/tracking_list"]);
-          //  this.api.showAlert('success','login successful')
-          form.reset();
-        },
-        (err) => {
-          //  console.log(err)
-          this.api.showAlert("danger", "username or password is inccorect");
-          form.reset();
+      this.api.login(data).subscribe({
+        next: data => this.handleResponse(data),
+        error: error => this.handleError(error)
         }
       );
 
     }
+  }
+
+  handleResponse(data:any){
+//   console.log(res)
+      this.router.navigate(["/flix-admin/tracking_list"]);
+      //  this.api.showAlert('success','login successful')
+      this.form.reset();
+  }
+
+  handleError(error:any){
+     //  console.log(err)
+          this.api.showAlert("danger", "username or password is inccorect");
+        this.form.reset();
   }
 }

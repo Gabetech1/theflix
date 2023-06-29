@@ -45,7 +45,7 @@ export class TrackingEditComponent {
     };
     this.api.editrack(id).subscribe(
       (res:any) => {
-         console.log(res)
+      //   console.log(res)
         this.trackid = res["id"];
         this.number = res["tracking_number"];
         this.desc = res["package"];
@@ -98,23 +98,34 @@ export class TrackingEditComponent {
     };
 
     //  console.log(data)
-    this.api.updateTrackById(data).subscribe(
-      (res) => {
-        //    console.log(res)
-        this.api.showAlert(
-          "success",
-          "Tracking Details has been updated successfully"
-        );
-        this.router.navigate(["/nul-admin/tracking_list"]);
-      },
-      (err) => {
-        //   console.log(err)
-        if (err.error.text == "inserted successfully") {
+    this.api.updateTrackById(data).subscribe({
+      next: res => this.handleResponse(res),
+      error: error => this.handleError(error)
+      }
+    );
+  }
+
+  delete(aa:any) {
+    // console.log('nxc')
+  }
+
+  handleResponse(data:any){
+   // console.log(data)
+    this.api.showAlert(
+      "success",
+      "Tracking Details has been updated successfully"
+    );
+    this.router.navigate(["/flix-admin/tracking_list"]);
+      }
+
+      handleError(error:any){
+         //   console.log(error)
+        if (error.error.text == "inserted successfully") {
           this.api.showAlert(
             "success",
             "Tracking Details has been updated successfully"
           );
-          this.router.navigate(["/nul-admin/tracking_list"]);
+          this.router.navigate(["/flix-admin/tracking_list"]);
           window.location.reload();
         } else {
           this.api.showAlert(
@@ -123,11 +134,5 @@ export class TrackingEditComponent {
           );
         }
       }
-    );
-  }
-
-  delete(aa:any) {
-    // console.log('nxc')
-  }
 
 }

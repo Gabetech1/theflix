@@ -18,34 +18,30 @@ export class ApiService {
   }
 
   register(data:any) {
-    console.log(data);
     return this.http.post(this.url + "/siginUpUser.php", data, {
       headers: this.httpHeaders(),
     });
   }
   login(data:any) {
-    console.log(data);
+
     return this.http.post(this.url + "/loginUser.php", data, {
       headers: this.httpHeaders(),
     });
   }
 
   editrack(data:any) {
-    console.log(data);
     return this.http.post(this.url + "/getrackByid.php", data, {
       headers: this.httpHeaders(),
     });
   }
 
   trackByNum(data:any) {
-    console.log(data);
     return this.http.post(this.url + "/getrackByNum.php", data, {
       headers: this.httpHeaders(),
     });
   }
 
   track(data:any) {
-    console.log(data);
     return this.http.post(this.url + "/postTrackingData.php", data, {
       headers: this.httpHeaders(),
     });
@@ -61,14 +57,14 @@ export class ApiService {
     });
   }
 
-  updateTrackById(id:any) {
-    return this.http.post(this.url + "/updateTrackById.php", id, {
+  updateTrackById(data:any) {
+
+    return this.http.post(this.url + "/updateTrackById.php", data, {
       headers: this.httpHeaders(),
     });
   }
 
   deleteTrackById(id:any) {
-    console.log(id);
     return this.http.post(this.url + "/deleteTrackById.php", id, {
       headers: this.httpHeaders(),
     });

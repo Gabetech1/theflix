@@ -21,9 +21,9 @@ export class TrackComponent {
     };
     this.api.trackByNum(data).subscribe(
       (res) => {
-        console.log(res);
+      //  console.log(res);
         this.ship = res;
-        // console.log(this.ship)
+       //  console.log(this.ship)
         if (this.ship.length == 0) {
           this.api.showAlert(
             "danger",
@@ -32,7 +32,7 @@ export class TrackComponent {
         }
       },
       (err) => {
-        console.log(err);
+      //  console.log(err);
       }
     );
   }
