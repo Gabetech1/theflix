@@ -66,41 +66,51 @@
               </div>
           </div>
 
-          <div class="col-12 col-lg-12">
+          <div class="col-md-6 mx-auto">
               <div class="contact-form">
-                  <form  class="row" id="contact-form">
-                      <div class="col-md-6 col-12">
+                  <form  class="row" id="contact-form" [formGroup]="contactForm" (ngSubmit)="sendMessage()">
+                      <div class="col-12">
                           <div class="single-personal-info">
                               <label for="fname">Full Name</label>
-                              <input type="text" id="fname" placeholder="Enter Name" >
+                              <input id="user-name"
+                              type="text"
+                              formControlName="username"
+                              required
+                              placeholder="Your Name"
+                              required="required" >
                           </div>
                       </div>
-                      <div class="col-md-6 col-12">
+                      <div class="col-12">
                           <div class="single-personal-info">
                               <label for="email">Email Address</label>
-                              <input type="email" id="email" placeholder="Enter Email Address" >
+                              <input id="user-email"
+                              type="email"
+                              formControlName="email"
+                              required
+                              placeholder="Email">
                           </div>
                       </div>
-                      <div class="col-md-6 col-12">
+                      <div class="col-12">
                           <div class="single-personal-info">
                               <label for="phone">Phone Number</label>
-                              <input type="text" id="phone" placeholder="Enter Number">
+                              <input id="user-phone"
+                              type="tel"
+                              formControlName="phone"
+                              required
+                              placeholder="Phone number">
                           </div>
                       </div>
-                      <div class="col-md-6 col-12">
-                          <div class="single-personal-info">
-                              <label for="subject">Subject</label>
-                              <input type="text" id="subject" placeholder="Enter Subject">
-                          </div>
-                      </div>
-                      <div class="col-md-12 col-12">
+                      <div class="col-12">
                           <div class="single-personal-info">
                               <label for="message">Enter Message</label>
-                              <textarea id="message" placeholder="Enter message"></textarea>
+                              <textarea formControlName="message"
+                              required
+                              placeholder="Message"
+                              required="required"></textarea>
                           </div>
                       </div>
                       <div class="col-md-12 col-12 text-center">
-                          <input class="submit-btn" type="submit" value="Send A Message">
+                          <input class="submit-btn" type="submit" value="Send Message">
                       </div>
                   </form>
               </div>
