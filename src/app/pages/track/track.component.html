@@ -1,0 +1,87 @@
+<app-header></app-header>
+
+<div class="page-banner-wrap text-center bg-cover" style="background-image: url('assets/img/page-banner.jpg')">
+  <div class="container">
+      <div class="page-heading text-white">
+          <h1>Track your Package </h1>
+      </div>
+  </div>
+</div>
+<div class="breadcrumb-wrapper">
+  <div class="container">
+      <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tracking</li>
+          </ol>
+      </nav>
+  </div>
+</div>
+
+<section class="contact-page-wrap section-padding">
+  <div class="container">
+
+      <div class="row pt-5 justify-content-center">
+
+          <div class="col-md-6">
+              <div class="contact-form tracking-form text-center">
+                  <form #form="ngForm" (ngSubmit)="track(form)" class="row justify-content-center" id="contact-form">
+                      <div class="col-md-12 col-12">
+                          <div class="single-personal-info">
+                              <label for="track">ENTER YOUR TRACKING NUMBER HERE </label>
+                              <input type="text" id="track" ngModel name="track" >
+                          </div>
+                      </div>
+
+                      <div class="col-md-12 col-12 text-center">
+                          <input class="submit-btn" type="submit" value="TRACk" [disabled]="form.invalid">
+                      </div>
+                  </form>
+              </div>
+
+              <div class="content1 table-responsive1 table-full-width" *ngIf="ship && ship.length !=0">
+
+                <table class="table table-hover table-striped table-bordered" >
+
+                          <tr>
+                              <th>Tracking Number</th>
+                              <td>{{ship.tracking_number}}</td>
+                          </tr>
+                          <tr>
+                              <th>Package Info</th>
+                              <td>{{ship.package}}</td>
+                          </tr>
+                          <tr>
+                              <th>Tracking Status</th>
+                              <td>{{ship.tracking_status}}</td>
+                          </tr>
+                       <!--  <div class="space"></div> -->
+                          <tr>
+                              <th>Sender Name</th>
+                              <td>{{ship.sender_name}}</td>
+                          </tr>
+                        <!--   <div class="space"></div> -->
+                          <tr>
+                              <th>Recipient Name</th>
+                              <td>{{ship.recipient_name}}</td>
+                          </tr>
+                          <tr>
+                              <th>Recipient Telephone</th>
+                              <td>{{ship.recipient_telephone}}</td>
+                          </tr>
+                          <tr>
+                              <th>Recipient Address</th>
+                              <td>{{ship.recipient_address}}</td>
+                          </tr>
+
+                </table>
+
+          </div>
+          </div>
+
+      </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

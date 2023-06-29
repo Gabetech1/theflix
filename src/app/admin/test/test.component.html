@@ -1,0 +1,74 @@
+<!-- Sidebar -->
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #1f425d;color: #fff;">
+     <app-sidebar></app-sidebar>
+    </nav>
+
+    <!-- Main Content -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h3 class="h21" style="color: #3fbafc;"><a routerLink="/">BACK TO HOMEPAGE</a></h3>
+      </div>
+
+      <!-- Create New Tracking Order -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Create New Tracking Order</h5>
+              <form>
+                <div class="form-group">
+                  <label for="orderNumber">Order Number</label>
+                  <input type="text" class="form-control" id="orderNumber">
+                </div>
+                <div class="form-group">
+                  <label for="customerName">Customer Name</label>
+                  <input type="text" class="form-control" id="customerName">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Show All Tracking Orders -->
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Show All Tracking Orders</h5>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>TRACKING NUMBER</th>
+                    <th>PACKAGE DESCRIPTION</th>
+                    <th>SENDER</th>
+                    <th>RECIPIENT</th>
+                    <th>DATE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>123456</td>
+                    <td>John Doe</td>
+                    <td>Shipped</td>
+                  </tr>
+                  <tr>
+                    <td>789012</td>
+                    <td>Jane Smith</td>
+                    <td>Pending</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+

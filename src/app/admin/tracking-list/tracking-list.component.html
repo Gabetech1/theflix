@@ -1,0 +1,35 @@
+<!-- Show All Tracking Orders -->
+<div class="row mt-4">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Show All Tracking Orders</h5>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of ship">
+              <td>{{row.tracking_number}}</td>
+              <td>{{row.package}}</td>
+              <td>{{row.sender_name}}</td>
+              <td>{{row.recipient_name}}</td>
+              <td>{{row.tracking_status}}</td>
+              <td>{{row.tracking_date}}</td>
+              <td>
+                  <button class="edit m-1" routerLink="/flix-admin/update_tracking/{{row.id}}" style="background-color: rgb(215, 131, 21);color: #fff;"><i class="px-2 fal fa-pen"></i></button>
+                  <form #form="ngForm" (ngSubmit)="delete(row.id)">
+                  <button class="delete m-1" style="background-color: brown;color: #fff;" type="submit"><i class="px-2 fal fa-trash"></i></button>
+              </form>
+
+              </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
