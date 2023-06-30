@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
   //url = "https://apis.developmentsite.top/flix";
-  url = 'http://127.0.0.1:8000/api';
+ // url = 'http://127.0.0.1:8000/api';
+  url = 'https://gabeapi.siteshowcase.top/api';
   smtp_url = "https://apis.developmentsite.top/flix/smtp";
 
   constructor(private http: HttpClient) { }
