@@ -42,25 +42,31 @@ export class NewTrackingComponent {
       this.api.showAlert("danger", "Tracking number field is empty");
     } else {
       //  console.log(data)
-      this.api.track(data).subscribe(
-        (res) => {
-          //console.log(res)
-          this.api.showAlert("success", "New Tracking Details Added");
-          form.reset();
-        },
-        (err) => {
-          // console.log(err)
-          if ((err.status = 200)) {
-            this.api.showAlert("success", "New Tracking Details Added");
-            // form.reset();
-          } else {
-            this.api.showAlert(
-              "danger",
-              "Failed to save details. Check your internet connection"
-            );
-          }
-        }
+      this.api.track(data).subscribe({
+        next: res => this.handleResponse(res,form),
+        error: error => this.handleError(error,form)
+        });
+    }
+  }
+
+  handleResponse(data:any,form:any){
+   // console.log(data)
+    this.api.showAlert("success", "New Tracking Details Added");
+    form.reset();
+    this.router.navigate(["/flix-admin/tracking_list"]);
+  }
+
+  handleError(error:any,form:any){
+    console.log(error)
+    if ((error.status = 200)) {
+      this.api.showAlert("success", "New Tracking Details Added");
+    form.reset();
+    } else {
+      this.api.showAlert(
+        "danger",
+        "Failed to save details. Check your internet connection"
       );
     }
   }
+
 }

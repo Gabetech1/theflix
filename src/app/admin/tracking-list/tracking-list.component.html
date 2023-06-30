@@ -16,8 +16,8 @@
               <td>{{row.package}}</td>
               <td>{{row.sender_name}}</td>
               <td>{{row.recipient_name}}</td>
-              <td>{{row.tracking_status}}</td>
-              <td>{{row.tracking_date}}</td>
+              <td>{{row.delivery_status}}</td>
+              <td>{{row.created_at | date}}</td>
               <td>
                   <button class="edit m-1" routerLink="/flix-admin/update_tracking/{{row.id}}" style="background-color: rgb(215, 131, 21);color: #fff;"><i class="px-2 fal fa-pen"></i></button>
                   <form #form="ngForm" (ngSubmit)="delete(row.id)">

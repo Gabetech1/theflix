@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  url = "https://apis.developmentsite.top/flix";
+  //url = "https://apis.developmentsite.top/flix";
+  url = 'http://127.0.0.1:8000/api';
   smtp_url = "https://apis.developmentsite.top/flix/smtp";
 
   constructor(private http: HttpClient) { }
@@ -30,48 +31,51 @@ export class ApiService {
   }
 
   editrack(data:any) {
-    return this.http.post(this.url + "/getrackByid.php", data, {
+    return this.http.post(this.url + "/getTrackById", data, {
       headers: this.httpHeaders(),
     });
   }
 
   trackByNum(data:any) {
-    return this.http.post(this.url + "/getrackByNum.php", data, {
+    return this.http.post(this.url + "/getTrackByNum", data, {
       headers: this.httpHeaders(),
     });
   }
 
   track(data:any) {
+    return this.http.post(this.url + "/postTrackingData", data);
+  }
+  /* track(data:any) {
     return this.http.post(this.url + "/postTrackingData.php", data, {
       headers: this.httpHeaders(),
     });
-  }
+  } */
 
   getrack() {
-    return this.http.get(this.url + "/getTrackingData.php");
+    return this.http.get(this.url + "/getTrackingData");
   }
 
   getrackById(id:any) {
-    return this.http.post(this.url + "/getrackByid.php", id, {
+    return this.http.post(this.url + "/getTrackById", id, {
       headers: this.httpHeaders(),
     });
   }
 
   updateTrackById(data:any) {
 
-    return this.http.post(this.url + "/updateTrackById.php", data, {
+    return this.http.post(this.url + "/updateTrackById", data, {
       headers: this.httpHeaders(),
     });
   }
 
   deleteTrackById(id:any) {
-    return this.http.post(this.url + "/deleteTrackById.php", id, {
+    return this.http.post(this.url + "/deleteTrackById", id, {
       headers: this.httpHeaders(),
     });
   }
 
   sendMessage(data:any) {
-    return this.http.post(this.smtp_url + "/sendmail.php", data, {
+    return this.http.post(this.smtp_url + "/sendMail.php", data, {
       headers: this.httpHeaders(),
     });
   }

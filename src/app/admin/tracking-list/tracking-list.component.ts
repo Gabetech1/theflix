@@ -31,7 +31,7 @@ export class TrackingListComponent {
   ngOnInit() {
     this.api.getrack().subscribe(
       (res) => {
-        //console.log(res)
+       // console.log(res)
         this.ship = res;
         //console.log(this.ship)
       },
@@ -52,7 +52,7 @@ export class TrackingListComponent {
         (res) => {
           // console.log(res);
           window.location.reload();
-          // this.router.navigate(['/nul-admin/tracking_list'])
+          this.router.navigate(['/flix-admin/tracking_list'])
         },
         (err) => {
           // console.log(err);

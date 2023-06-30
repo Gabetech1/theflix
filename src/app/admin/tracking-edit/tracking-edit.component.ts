@@ -45,20 +45,20 @@ export class TrackingEditComponent {
     };
     this.api.editrack(id).subscribe(
       (res:any) => {
-      //   console.log(res)
+         console.log(res)
         this.trackid = res["id"];
         this.number = res["tracking_number"];
         this.desc = res["package"];
-        this.status = res["tracking_status"];
+        this.status = res["delivery_status"];
         this.sender = res["sender_name"];
-        this.s_phone = res["sender_phone"];
+        this.s_phone = res["sender_telephone"];
         this.s_email = res["sender_email"];
         this.s_city = res["sender_city"];
         this.s_country = res["sender_country"];
         this.s_post = res["sender_zipcode"];
         this.s_address = res["sender_address"];
         this.recipient = res["recipient_name"];
-        this.r_phone = res["recipient_phone"];
+        this.r_phone = res["recipient_telephone"];
         this.r_email = res["recipient_email"];
         this.r_city = res["recipient_city"];
         this.r_country = res["recipient_country"];
@@ -66,7 +66,7 @@ export class TrackingEditComponent {
         this.r_address = res["recipient_address"];
       },
       (err) => {
-        //  console.log(err)
+          console.log(err)
       }
     );
   }
@@ -110,7 +110,7 @@ export class TrackingEditComponent {
   }
 
   handleResponse(data:any){
-   // console.log(data)
+    console.log(data)
     this.api.showAlert(
       "success",
       "Tracking Details has been updated successfully"

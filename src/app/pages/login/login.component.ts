@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -8,38 +9,35 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  form: any;
-  constructor(private api: ApiService, private router: Router) {}
 
-  login(form:any) {
-    if (!(form.value.email && form.value.password)) {
-      alert("Enter user details");
-    } else {
-      const data = {
-        email: form.value.email,
-        password: form.value.password,
-      };
+  public error = null;
 
-      // console.log (data)
-      this.api.login(data).subscribe({
-        next: data => this.handleResponse(data),
-        error: error => this.handleError(error)
-        }
-      );
+  constructor (
+    private authservice: AuthService,
+    private token: TokenService,
+    private router: Router
+    ) {}
 
-    }
+  public form = {
+    email: null,
+    password: null
+  }
+
+  onSubmit() {
+    return this.authservice.login(this.form).subscribe({
+      next: data => this.handleResponse(data),
+      error: error => this.handleError(error)
+    });
   }
 
   handleResponse(data:any){
-//   console.log(res)
-      this.router.navigate(["/flix-admin/tracking_list"]);
-      //  this.api.showAlert('success','login successful')
-      this.form.reset();
+    this.token.handle(data.access_token);
+    this.authservice.changeAuthStatus(true);
+    this.router.navigateByUrl('/flix-admin/tracking_list');
+
   }
 
   handleError(error:any){
-     //  console.log(err)
-          this.api.showAlert("danger", "username or password is inccorect");
-        this.form.reset();
+    this.error = error.error.error;
   }
 }
