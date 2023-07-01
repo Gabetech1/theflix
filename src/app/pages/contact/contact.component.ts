@@ -43,7 +43,8 @@ export class ContactComponent {
   }
 
   handleResponse(data:any){
-    if (data.error.text == "Email sent" || data.status == 200) {
+    console.log(data);
+    if (data['status'] == "Email sent" || data.status == 200) {
       this.contactForm.reset();
       alert("Your message has been sent. We will get back to you soon.");
     } else {
@@ -54,7 +55,7 @@ export class ContactComponent {
   }
 
   handleError(error:any){
-    this.error = error.error.error;
+  //  this.error = error.error.error;
     console.log("contact message ", error);
     alert(
       "Message could not be sent. Please check your internet or try again later."

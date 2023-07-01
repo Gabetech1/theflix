@@ -5,10 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  //url = "https://apis.developmentsite.top/flix";
  // url = 'http://127.0.0.1:8000/api';
   url = 'https://gabeapi.siteshowcase.top/api';
-  smtp_url = "https://apis.developmentsite.top/flix/smtp";
 
   constructor(private http: HttpClient) { }
 
@@ -76,7 +74,7 @@ export class ApiService {
   }
 
   sendMessage(data:any) {
-    return this.http.post(this.smtp_url + "/sendMail.php", data, {
+    return this.http.post(this.url + "/sendMail", data, {
       headers: this.httpHeaders(),
     });
   }
