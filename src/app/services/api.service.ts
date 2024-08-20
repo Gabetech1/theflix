@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
  // url = 'http://127.0.0.1:8000/api';
-  url = 'https://gabeapi.siteshowcase.top/api';
+  url = 'https://api.flixshipping.com/api';
 
   constructor(private http: HttpClient) { }
 
