@@ -10,7 +10,7 @@ import { BehaviorSubject  } from 'rxjs';
 export class AuthService {
   isLoggedIn = false;
 
-  private baseUrl = 'https://gabeapi.siteshowcase.top/api';
+  private baseUrl = 'https://api.flixshipping.com/api';
  //private baseUrl = 'http://127.0.0.1:8000/api';
   constructor(
     private http: HttpClient,
